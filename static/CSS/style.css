@@ -1,0 +1,123 @@
+/* https://imgod.me */
+:root {
+  --bg: rgba(236, 239, 255, 1);
+  --fontColor: rgba(109, 93, 252, 1);
+  --fontColor2: rgba(155, 170, 207, 1);
+  --searchFont: rgba(137, 149, 182, 1);
+  --light2: rgba(255, 255, 255, 1);
+  --light1: rgba(200, 208, 231, 1);
+}
+
+/* 根据系统的深色模式响应深色变量 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: rgba(20, 20, 25, 1);
+    --fontColor: rgba(255, 255, 255, 1);
+    --fontColor2: rgba(90, 90, 90, 1);
+    --searchFont: rgb(148, 148, 148);
+    --light2: rgba(255, 255, 255, 0.04);
+    --light1: rgba(0, 0, 0, 2);
+  }
+}
+
+*,
+html {
+  font-family: "微软雅黑", sans-serif;
+  box-sizing: border-box;
+  font-size: 70%;
+}
+body {
+  background: var(--bg);
+  text-align: center;
+}
+/*  切换 */
+.segmented-control {
+  margin: 7% auto auto;
+  width: 20.4rem;
+  height: 4rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--light1),
+    -0.2rem -0.2rem 0.5rem var(--light2);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.segmented-control input {
+  display: none;
+}
+.segmented-control > input:checked + label {
+  transition: all 0.5s ease;
+  color: var(--fontColor);
+}
+.segmented-control__search {
+  width: 6.8rem;
+  height: 3.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--fontColor2);
+  transition: all 0.5s ease;
+}
+.segmented-control__search:hover {
+  color: var(--fontColor);
+}
+.segmented-control__color {
+  position: absolute;
+  height: 3.4rem;
+  width: 6.2rem;
+  margin-left: 0.3rem;
+  border-radius: 0.8rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--light1),
+    inset -0.2rem -0.2rem 0.5rem var(--light2);
+  pointer-events: none;
+}
+/* 切换动画 */
+#s-baidu:checked ~ .segmented-control__color {
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#s-google:checked ~ .segmented-control__color {
+  transform: translateX(6.8rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+#s-bing:checked ~ .segmented-control__color {
+  transform: translateX(13.6rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/*  搜索  */
+.search-input {
+  margin: 2% auto;
+  width: 60%;
+  height: 4rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  padding-left: 3.8rem;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--light1),
+    -0.2rem -0.2rem 0.5rem var(--light2);
+  background: none;
+  font-family: inherit;
+  color: var(--fontColor2);
+}
+.search-input::-moz-placeholder {
+  color: var(--searchFont);
+}
+.search-input:-ms-input-placeholder {
+  color: var(--searchFont);
+}
+.search-input::placeholder {
+  color: var(--searchFont);
+}
+.search-input:focus {
+  outline: none;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--light1),
+    inset -0.2rem -0.2rem 0.5rem var(--light2);
+}
+.hidden {
+  display: none;
+}

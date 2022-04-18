@@ -1,0 +1,144 @@
+<!-- https://imgod.me -->
+<!DOCTYPE html>
+<html lang="ZH-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
+    />
+    <title>GODSearch</title>
+    <link rel="icon" href="https://imgod.me/img/GOD.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://search.imgod.me/" />
+    <meta property="og:title" content="新拟态" />
+    <meta property="og:description" content="softUI-新拟态" />
+    <meta
+      property="og:image"
+      content="https://s2.loli.net/2022/03/16/MKTLZF38BmQ1Wyf.jpg"
+    />
+    <link rel="stylesheet" href="static/CSS/style.css" />
+    <script src="static/JS/jquery.min.js"></script>
+    <script src="static/JS/dark.js"></script>
+    <script src="static/JS/banf12.js"></script>
+  </head>
+
+  <body>
+    <div main-search>
+      <!-- 切换 -->
+      <div class="segmented-control">
+        <input type="radio" name="radio2" value="3" id="s-baidu" checked />
+        <label
+          for="s-baidu"
+          class="segmented-control__search"
+          data-target="baidu-search"
+        >
+          <span>Baidu</span>
+        </label>
+
+        <input type="radio" name="radio2" value="4" id="s-google" onclick="" />
+        <label
+          for="s-google"
+          class="segmented-control__search"
+          data-target="google-search"
+        >
+          <span>Google</span>
+        </label>
+
+        <input type="radio" name="radio2" value="5" id="s-bing" onclick="" />
+        <label
+          for="s-bing"
+          class="segmented-control__search"
+          data-target="bing-search"
+        >
+          <span>Bing</span>
+        </label>
+
+        <div class="segmented-control__color"></div>
+      </div>
+      <!-- 搜索 -->
+      <div>
+        <form
+          class="search"
+          id="baidu-search"
+          action="https://www.baidu.com/s"
+          method="get"
+          target="_blank"
+        >
+          <input
+            placeholder="百度一下"
+            type="text"
+            name="wd"
+            autocomplete="off"
+            autofocus="autofocus"
+            value=""
+            class="search-input"
+          />
+        </form>
+        <form
+          class="search hidden"
+          id="google-search"
+          action="https://www.google.com/search"
+          method="get"
+          target="_blank"
+        >
+          <input
+            placeholder="Google搜索"
+            type="text"
+            name="q"
+            autocomplete="off"
+            autofocus="autofocus"
+            value=""
+            class="search-input"
+          />
+        </form>
+        <form
+          class="search hidden"
+          id="bing-search"
+          action="https://cn.bing.com/search?"
+          method="get"
+          target="_blank"
+        >
+          <input
+            placeholder="Bing搜索"
+            type="text"
+            name="q"
+            autocomplete="off"
+            autofocus="autofocus"
+            value=""
+            class="search-input"
+          />
+        </form>
+      </div>
+    </div>
+    <script>
+      $("div").on("click", "label", function () {
+        $("div label").each(function () {
+          $(this).attr("class", "segmented-control__search");
+        });
+        $(this).attr("class", "segmented-control__search");
+        var id = $(this).attr("data-target");
+        $("div form").each(function () {
+          $(this).addClass("hidden");
+        });
+        $("#" + id).removeClass("hidden");
+      });
+    </script>
+    <script>
+      var OriginTitile = document.title;
+      var titleTime;
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          document.title = "404 not found";
+          clearTimeout(titleTime);
+        } else {
+          document.title = "o(〃'▽'〃)o";
+          titleTime = setTimeout(function () {
+            document.title = OriginTitile;
+          }, 1000);
+        }
+      });
+    </script>
+  </body>
+</html>
